@@ -28,7 +28,7 @@ export default function RootLayout({
 				<header className="header">
 					<div className="container header__inner">
 						<Link href="/" className="header__logo">MY BLOG</Link>
-						<nav className="header__nav">
+            <nav className="header__nav" aria-label="メインナビゲーション">
 							<Link href="/" className="nav-link">Home</Link>
 							<Link href="/posts" className="nav-link">Posts</Link>
 							<Link href="/about" className="nav-link">About</Link>
@@ -41,7 +41,7 @@ export default function RootLayout({
 				<footer className="footer">
 					<div className="container footer__inner">
 						<p className="footer__copy">&copy; {new Date().getFullYear()} My Blog. All rights reserved.</p>
-						<nav className="header__nav">
+						<nav className="header__nav" aria-label="フッターナビゲーション">
 							<Link href="/privacy" className="nav-link">Privacy Policy</Link>
 							<Link href="/terms" className="nav-link">Terms of Service</Link>
 						</nav>

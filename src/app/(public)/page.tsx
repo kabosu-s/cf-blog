@@ -4,6 +4,8 @@ import { getPosts } from '@/server/db';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const posts = await getPosts();
 

@@ -17,7 +17,6 @@ Implementation: `src/app/styles/tokens.css` (or within `globals.css`)
   --color-primary: #009aa3;      /* Peacock Blue */
   --color-navy: #102a43;
   --color-gold: #f2b63d;
-  --color-bg: #ffffff;
   --color-bg-section: #f5f7f8;
   --color-border: #e3e8ee;
 
