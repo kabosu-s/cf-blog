@@ -1,0 +1,53 @@
+language: 'ja'
+reviews:
+  profile: 'chill'
+  request_changes_workflow: false
+  high_level_summary: true
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true                                                         
+    base_branches:       
+      - "main"
+  path_filters:
+    - '!**/*.lock'
+    - '!**/package-lock.json'
+    - '!**/pnpm-lock.yaml'
+    - '!**/bun.lockb'
+    - '!**/node_modules/**'
+  path_instructions:
+    - path: '**/*.{ts,tsx}'
+      instructions: |
+        Next.js App Router (Next.js 16 + React 19) のTypeScriptファイルです。
+        GEMINI.md および DESIGN.md に基づき、以下の観点でレビューしてください：
+        - 不要な `"use client";` ディレクティブがないか（Server Components 優先）
+        - Server Actionsは冒頭でauth()を呼んでセッションを検証しているか
+        - ユーザー入力にZodバリデーションがあるか
+        - anyの使用・不要な型キャストがないか（Warning）
+        - 他ユーザーのリソースを操作できるような認可漏れがないか（Critical）
+        - 環境変数を直接コードに埋め込まれていないか
+        - コンポーネント定義が `export const ComponentName = ...` 形式か。
+        - TypeScript の `interface` がコンポーネントと同じファイルに定義されているか。
+        - 意味のある HTML タグ（`<main>`, `<header>`, `<nav>`, `<section>`等）を使用し、WCAG AA準拠のアクセシビリティ（a11y）が考慮されているか。
+        - インタラクティブ要素に適切な `aria-label` やフォーカス管理がなされているか。
+        - スタイル指定にハードコードされた色コードがなく、DESIGN.md 定義の CSS 変数が使用されているか。
+        - anyの使用や不要な型キャストがないか。
+    - path: 'src/app/**/*.{ts,tsx}'
+      instructions: |
+        app/ 配下のルーティング・レイヤーです。
+        - `params` や `searchParams` が `Promise` として扱われ、`await` されているか。
+        - ページ内での複雑なロジックはドメイン層やコンポーネントに委譲されているか。
+    - path: 'src/components/ui/**/*.{ts,tsx}'
+      instructions: |
+        src/components/ui/ 配下の汎用UIコンポーネントです。
+        - DESIGN.md のコンポーネント規約（Button, Card, Navigation等）に従っているか。
+        - 特定のビジネスロジックを含まず、再利用可能な設計になっているか。
+        - ホバー時のインタラクション（色反転、下線アニメーション等）が DESIGN.md 通りに実装されているか。
+    - path: '**/*.{css,scss}'
+      instructions: |
+        CSSファイルです。
+        - DESIGN.md で定義されたデザイントークン（CSS変数）を正しく使用しているか。
+        - ハードコードされた色指定（#hex, rgb等）が含まれていないか。
+        - シャドウの多用やプライマリカラーの過剰使用がないか。
+chat:
+  auto_reply: true
