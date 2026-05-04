@@ -1,7 +1,7 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { Post } from "@/domain/post";
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+import { Post } from '@/domain/post';
 
-type PostRow = Omit<Post, "tags"> & { tags_json: string };
+type PostRow = Omit<Post, 'tags'> & { tags_json: string };
 
 const mapPostRow = (row: PostRow): Post => {
   const tags = (() => {
@@ -29,7 +29,8 @@ export const getPosts = async (): Promise<Post[]> => {
   const db = env.blog_db;
 
   const { results } = await db
-    .prepare(`
+    .prepare(
+      `
       SELECT
         posts.id,
         posts.slug,
@@ -52,7 +53,8 @@ export const getPosts = async (): Promise<Post[]> => {
       WHERE published = 1
       GROUP BY posts.id
       ORDER BY posts.created_at DESC
-    `)
+    `,
+    )
     .all<PostRow>();
 
   return (results ?? []).map(mapPostRow);
@@ -63,7 +65,8 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   const db = env.blog_db;
 
   const result = await db
-    .prepare(`
+    .prepare(
+      `
       SELECT
         posts.id,
         posts.slug,
@@ -84,9 +87,11 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
       LEFT JOIN post_tags ON post_tags.post_id = posts.id
       LEFT JOIN tags ON tags.id = post_tags.tag_id
       WHERE slug = ?
+        AND published = 1
       GROUP BY posts.id
       LIMIT 1
-    `)
+    `,
+    )
     .bind(slug)
     .first<PostRow>();
 
