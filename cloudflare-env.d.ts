@@ -9,7 +9,9 @@ declare namespace Cloudflare {
 		WORKER_SELF_REFERENCE: Fetcher /* my-blog */;
 	}
 }
-interface CloudflareEnv extends Cloudflare.Env {}
+interface CloudflareEnv extends Cloudflare.Env {
+  blog_db: D1Database;
+}
 type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
