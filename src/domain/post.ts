@@ -5,7 +5,7 @@ export type Post = {
   slug: string;
   title: string;
   content: string;
-  published: boolean;
+  published: number;
   created_at: string;
   tags: Tag[];
 };
