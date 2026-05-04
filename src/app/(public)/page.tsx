@@ -4,7 +4,7 @@ import { getPosts } from '@/server/db';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   const posts = await getPosts();
@@ -16,25 +16,17 @@ export default async function Page() {
         <div className="container hero">
           <div className="hero__content">
             <h1 className="fs-hero">Precision in Every Story</h1>
-            <p className="fs-sub">
-              A high-quality blog platform focused on professional insights, 
-              consistent design, and interactive experiences.
-            </p>
+            <p className="fs-sub">A high-quality blog platform focused on professional insights, consistent design, and interactive experiences.</p>
             <div className="hero__cta">
               <Button href="#posts">Read Latest</Button>
-              <Button href="/about" variant="outline">Our Vision</Button>
+              <Button href="/about" variant="outline">
+                Our Vision
+              </Button>
             </div>
           </div>
           <div className="hero__image-wrapper">
+            <Image src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop" alt="Professional Workspace" className="hero__image" fill priority style={{ objectFit: 'cover' }} />
             <div className="hero__image-overlay"></div>
-            <Image 
-              src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop" 
-              alt="Professional Workspace" 
-              className="hero__image"
-              fill
-              priority
-              style={{ objectFit: 'cover' }}
-            />
           </div>
         </div>
       </section>
@@ -54,16 +46,16 @@ export default async function Page() {
               {posts.map((post) => (
                 <Card key={post.id}>
                   <h3 className="fs-sub">{post.title}</h3>
-                  <p className="fs-body">
-                    {post.content.length > 120 
-                      ? `${post.content.substring(0, 120)}...` 
-                      : post.content}
-                  </p>
+                  <p className="fs-body">{post.content.length > 120 ? `${post.content.substring(0, 120)}...` : post.content}</p>
                   <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <time className="fs-caption" dateTime={post.created_at}>
-                      {new Date(post.created_at).toLocaleDateString()}
+                      {new Intl.DateTimeFormat('ja-JP', {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      }).format(new Date(post.created_at))}
                     </time>
-                    <Link href={`/posts/${post.slug}`} className="fs-body" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: '500' }}>
+                    <Link href={`/posts/${post.slug}`} aria-label={`「${post.title}」を読む`} className="fs-body nav-link" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: '500' }}>
                       Read more →
                     </Link>
                   </div>
