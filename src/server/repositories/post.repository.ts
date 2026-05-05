@@ -52,10 +52,10 @@ export const getPosts = async (): Promise<Post[]> => {
       });
     }
 
-    if (r.tagId) {
+    if (r.tagId != null && r.tagName != null) {
       map.get(r.id)!.tags.push({
         id: r.tagId,
-        name: r.tagName!,
+        name: r.tagName,
       });
     }
   }

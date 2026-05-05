@@ -48,8 +48,6 @@ next-env.d.ts
 .wrangler
 .dev.vars*
 
-# migrations
-/migrations
 
 
 !.dev.vars.example
