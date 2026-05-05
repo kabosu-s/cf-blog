@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPosts } from '@/server/db';
+import { getPosts } from "@/server/repositories/post.repository";
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 

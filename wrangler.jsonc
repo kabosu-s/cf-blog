@@ -39,8 +39,9 @@
 	"d1_databases": [
 		{
 			"binding": "blog_db",
-			"database_name": "blog-db",
-			"database_id": "289f6e23-875a-4d86-9136-f91852003867"
+			"database_name": "blog_db",
+			"database_id": "df959d7a-3ded-4970-944c-8b3e0c087632",
+      "migrations_dir": "migrations"
 		}
 	]
 	/**
