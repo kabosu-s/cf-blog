@@ -13,7 +13,7 @@ export interface Post {
   title: string;
   content: string;
   published: number;
-  createdAt: string;
+  created_at: string;
   tags: Tag[];
 }
 

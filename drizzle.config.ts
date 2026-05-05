@@ -6,7 +6,7 @@ function validateEnv() {
   const databaseId = process.env.CLOUDFLARE_DATABASE_ID;
   const token = process.env.CLOUDFLARE_D1_TOKEN;
   if (!accountId || !databaseId || !token) {
-    throw new Error(`Missing environment variables: ${!accountId ? 'CLOUDFLARE_ACCOUNT_ID ' : ''}${!databaseId ? 'CLOUDFLARE_DATABASE_ID ' : ''}${!token ? 'CLOUDFLARE_D1_TOKEN ' : ''}`.trim());
+    throw new Error(`不足している環境変数: ${!accountId ? 'CLOUDFLARE_ACCOUNT_ID ' : ''}${!databaseId ? 'CLOUDFLARE_DATABASE_ID ' : ''}${!token ? 'CLOUDFLARE_D1_TOKEN ' : ''}`.trim());
   }
   return { accountId, databaseId, token };
 }
