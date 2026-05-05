@@ -8,7 +8,7 @@ export const posts = sqliteTable(
   'posts',
   {
     id: integer('id').primaryKey(),
-    slug: text('slug').notNull().unique(),
+    slug: text('slug').notNull(),
     title: text('title').notNull(),
     content: text('content').notNull(),
     published: integer('published').notNull(),

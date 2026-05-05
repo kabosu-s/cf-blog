@@ -94,7 +94,7 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     published: base.published,
     created_at: base.createdAt,
     tags: rows
-      .filter((r) => r.tagId)
-      .map((r) => ({ id: r.tagId!, name: r.tagName! })),
+      .filter((r) => r.tagId != null && r.tagName != null)
+      .map((r) => ({ id: r.tagId as number, name: r.tagName as string })),
   };
 };
