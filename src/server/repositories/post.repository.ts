@@ -2,7 +2,22 @@ import { eq, desc, and } from "drizzle-orm";
 import { getDB } from "@/server/db";
 import { posts, tags, postTags } from "@/db/schema";
 
-export const getPosts = async () => {
+export interface Tag {
+  id: number;
+  name: string;
+}
+
+export interface Post {
+  id: number;
+  slug: string;
+  title: string;
+  content: string;
+  published: number;
+  createdAt: string;
+  tags: Tag[];
+}
+
+export const getPosts = async (): Promise<Post[]> => {
   const db = await getDB();
 
   const rows = await db
@@ -22,7 +37,7 @@ export const getPosts = async () => {
     .where(eq(posts.published, 1))
     .orderBy(desc(posts.createdAt));
 
-  const map = new Map<number, any>();
+  const map = new Map<number, Post>();
 
   for (const r of rows) {
     if (!map.has(r.id)) {
@@ -38,9 +53,9 @@ export const getPosts = async () => {
     }
 
     if (r.tagId) {
-      map.get(r.id).tags.push({
+      map.get(r.id)!.tags.push({
         id: r.tagId,
-        name: r.tagName,
+        name: r.tagName!,
       });
     }
   }
@@ -48,7 +63,7 @@ export const getPosts = async () => {
   return Array.from(map.values());
 };
 
-export const getPostBySlug = async (slug: string) => {
+export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   const db = await getDB();
 
   const rows = await db

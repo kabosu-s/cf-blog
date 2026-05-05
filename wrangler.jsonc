@@ -41,7 +41,7 @@
 			"binding": "blog_db",
 			"database_name": "blog-db",
 			"database_id": "289f6e23-875a-4d86-9136-f91852003867",
-      "migrations_dir": "drizzle"
+      "migrations_dir": "migrations"
 		}
 	]
 	/**
