@@ -1,18 +1,32 @@
 "use server";
 
+import { z } from "zod";
 import { createPost } from "@/server/repositories/post.repository";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function submitPost(formData: FormData) {
-  const title = formData.get("title") as string;
-  const slug = formData.get("slug") as string;
-  const content = formData.get("content") as string;
-  const published = formData.get("published") === "on";
+const postFormSchema = z.object({
+  title: z.string().nonempty("Title is required"),
+  slug: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must be URL-safe"),
+  content: z.string().nonempty("Content is required"),
+  published: z.boolean(),
+});
 
-  if (!title || !slug || !content) {
-    throw new Error("Missing required fields");
+export async function submitPost(formData: FormData) {
+  const parseResult = postFormSchema.safeParse({
+    title: formData.get("title"),
+    slug: formData.get("slug"),
+    content: formData.get("content"),
+    published: formData.get("published") === "on",
+  });
+
+  if (!parseResult.success) {
+    throw new Error(parseResult.error.message);
   }
+
+  const { title, slug, content, published } = parseResult.data;
 
   await createPost({
     title,

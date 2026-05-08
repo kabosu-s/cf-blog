@@ -1,3 +1,8 @@
+
+.pageTitle {
+  margin-bottom: 3.2rem;
+}
+
 .form {
   display: flex;
   flex-direction: column;

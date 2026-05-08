@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/Button';
 import { submitPost } from './actions';
 import styles from './page.module.css';
 
-export default function AdminPage() {
+const AdminPage = () => {
   return (
     <main className="container section">
-      <h1 className="fs-section" style={{ marginBottom: '3.2rem' }}>
+      <h1 className={`fs-section  ${styles.pageTitle}`}>
         Create New Post
       </h1>
       <form action={submitPost} className={styles.form}>
@@ -34,4 +34,5 @@ export default function AdminPage() {
       </form>
     </main>
   );
-}
+};
+export default AdminPage;
