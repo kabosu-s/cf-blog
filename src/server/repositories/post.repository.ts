@@ -99,6 +99,16 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
   };
 };
 
+export const isSlugExists = async (slug: string): Promise<boolean> => {
+  const db = await getDB();
+  const result = await db
+    .select({ id: posts.id })
+    .from(posts)
+    .where(eq(posts.slug, slug))
+    .limit(1);
+  return result.length > 0;
+};
+
 export const createPost = async (data: {
   title: string;
   slug: string;
@@ -107,9 +117,18 @@ export const createPost = async (data: {
 }): Promise<void> => {
   const db = await getDB();
 
+  let finalSlug = data.slug;
+  const exists = await isSlugExists(finalSlug);
+
+  if (exists) {
+    // スラッグが重複している場合、ランダムなハッシュを付与して回避する
+    const hash = Math.random().toString(36).substring(2, 6);
+    finalSlug = `${data.slug}-${hash}`;
+  }
+
   await db.insert(posts).values({
     title: data.title,
-    slug: data.slug,
+    slug: finalSlug,
     content: data.content,
     published: data.published ? 1 : 0,
     createdAt: new Date().toISOString(),
