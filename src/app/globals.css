@@ -10,7 +10,7 @@
   --color-placeholder: #dddddd;
 
   /* Typography */
-  --font-family-base: var(--font-noto-sans-jp), 'Noto Sans JP', sans-serif;
+  --font-family-base: var(--font-noto-sans-jp), sans-serif;
   --fs-hero: 3.2rem;
   --fs-section: 2.4rem;
   --fs-sub: 1.8rem;

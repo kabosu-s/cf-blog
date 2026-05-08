@@ -98,3 +98,20 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
       .map((r) => ({ id: r.tagId as number, name: r.tagName as string })),
   };
 };
+
+export const createPost = async (data: {
+  title: string;
+  slug: string;
+  content: string;
+  published: boolean;
+}): Promise<void> => {
+  const db = await getDB();
+
+  await db.insert(posts).values({
+    title: data.title,
+    slug: data.slug,
+    content: data.content,
+    published: data.published ? 1 : 0,
+    createdAt: new Date().toISOString(),
+  });
+};
