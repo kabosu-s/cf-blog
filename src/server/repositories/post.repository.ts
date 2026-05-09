@@ -1,6 +1,6 @@
-import { eq, desc, and } from "drizzle-orm";
-import { getDB } from "@/server/db";
-import { posts, tags, postTags } from "@/db/schema";
+import { eq, desc, and } from 'drizzle-orm';
+import { getDB } from '@/server/db';
+import { posts, tags, postTags } from '@/db/schema';
 
 export interface Tag {
   id: number;
@@ -93,8 +93,43 @@ export const getPostBySlug = async (slug: string): Promise<Post | null> => {
     content: base.content,
     published: base.published,
     created_at: base.createdAt,
-    tags: rows
-      .filter((r) => r.tagId != null && r.tagName != null)
-      .map((r) => ({ id: r.tagId as number, name: r.tagName as string })),
+    tags: rows.filter((r): r is typeof r & { tagId: number; tagName: string } =>
+    r.tagId != null && r.tagName != null)
+    .map((r) => ({ id: r.tagId, name: r.tagName})),
   };
+};
+
+export const isSlugExists = async (slug: string): Promise<boolean> => {
+  const db = await getDB();
+  const result = await db.select({ id: posts.id }).from(posts).where(eq(posts.slug, slug)).limit(1);
+  return result.length > 0;
+};
+
+export const createPost = async (data: { title: string; slug: string; content: string; published: boolean }): Promise<void> => {
+  const db = await getDB();
+  const maxRetries = 3;
+  let attempt = 0;
+
+  while (attempt < maxRetries) {
+    const finalSlug = attempt === 0 ? data.slug : `${data.slug}-${Math.random().toString(36).substring(2, 8)}`;
+
+    try {
+      await db.insert(posts).values({
+        title: data.title,
+        slug: finalSlug,
+        content: data.content,
+        published: data.published ? 1 : 0,
+        createdAt: new Date().toISOString(),
+      });
+      return;
+    } catch (error) {
+      // ユニーク制約違反の場合はリトライ
+      if (error instanceof Error && error.message.includes('UNIQUE constraint')) {
+        attempt++;
+        continue;
+      }
+      throw error;
+    }
+  }
+  throw new Error('Failed to create post: slug collision after max retries');
 };
