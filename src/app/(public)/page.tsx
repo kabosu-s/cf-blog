@@ -55,7 +55,7 @@ export const Page = async () => {
                         day: '2-digit',
                       }).format(new Date(post.created_at))}
                     </time>
-                    <Link href={`/posts/${post.slug}`} aria-label={`「${post.title}」を読む`} className="fs-body nav-link" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: '500' }}>
+                    <Link href={`/posts/${post.slug}`} aria-label={`「${post.title}」を読む`} className="fs-body nav-link" style={{ color: 'var(--primary)', textDecoration: 'none', fontWeight: '500' }}>
                       Read more →
                     </Link>
                   </div>

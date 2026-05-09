@@ -23,7 +23,7 @@
 }
 
 .checkboxLabel {
-  font-size: var(--fs-body);
+  font-size: var(--text-base);
   cursor: pointer;
 }
 
