@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { submitPost } from './actions';
 import styles from './page.module.css';
 
-const AdminPage = () => {
+export const AdminPage = () => {
   return (
     <main className="container section">
       <h1 className={`fs-section  ${styles.pageTitle}`}>

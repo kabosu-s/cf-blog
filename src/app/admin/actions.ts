@@ -6,11 +6,11 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 const postFormSchema = z.object({
-  title: z.string().nonempty("Title is required"),
+  title: z.string().min(1, "Title is required"),
   slug: z
     .string()
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must be URL-safe"),
-  content: z.string().nonempty("Content is required"),
+  content: z.string().min(1, "Content is required"),
   published: z.boolean(),
 });
 

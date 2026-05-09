@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react';
 import { Textarea } from './Textarea';
 
 describe('Textarea Component', () => {
+  it('associates label and input even when id is omitted', () => {
+    render(<Textarea label="Auto ID Content" />);
+    const textarea = screen.getByLabelText('Auto ID Content');
+    expect(textarea).toBeInTheDocument();
+    expect(textarea).toHaveAttribute('id');
+  });
+
   it('renders correctly with a label', () => {
     render(<Textarea label="Content" id="content" />);
     expect(screen.getByLabelText('Content')).toBeInTheDocument();

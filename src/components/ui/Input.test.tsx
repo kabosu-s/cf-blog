@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react';
 import { Input } from './Input';
 
 describe('Input Component', () => {
+  it('associates label and input even when id is omitted', () => {
+    render(<Input label="Auto ID Field" />);
+    const input = screen.getByLabelText('Auto ID Field');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('id');
+  });
+
   it('renders correctly with a label', () => {
     render(<Input label="Username" id="username" />);
     expect(screen.getByLabelText('Username')).toBeInTheDocument();
