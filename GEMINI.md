@@ -25,8 +25,6 @@ This document defines the foundational mandates and workflows for this project. 
 
 ### 3.2 Styling
 - Use CSS Variables defined in `DESIGN.md` for all styling.
-- Prefer class-based styling. For readability, add line breaks between utility-like classes.
-- **NO** hardcoded color codes or magic numbers in component-specific styles.
 
 ## 4. Quality & Accessibility (a11y)
 - **a11y First**: Target WCAG AA compliance. Use semantic HTML (`<main>`, `<header>`, `<nav>`, `<section>`).

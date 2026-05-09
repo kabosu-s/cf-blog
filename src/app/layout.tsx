@@ -18,8 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Blog | Precision & Quality',
-  description: 'ブログを作ってみる。',
+  title: 'Moon Jelly | Precision & Quality',
+  description: 'A serene and analytical blog platform.',
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" className="scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
       </head>
@@ -36,7 +36,7 @@ export default function RootLayout({
         <header className="header">
           <div className="container header__inner">
             <Link href="/" className="header__logo">
-              MY BLOG
+              MOON JELLY
             </Link>
             <nav className="header__nav" aria-label="メインナビゲーション">
               <Link href="/" className="nav-link">
@@ -52,17 +52,19 @@ export default function RootLayout({
           </div>
         </header>
 
-        {children}
+        <div className="flex-1">
+          {children}
+        </div>
 
         <footer className="footer">
           <div className="container footer__inner">
-            <p className="footer__copy">&copy; {new Date().getFullYear()} My Blog. All rights reserved.</p>
+            <p className="fs-caption">&copy; {new Date().getFullYear()} Moon Jelly. All rights reserved.</p>
             <nav className="header__nav" aria-label="フッターナビゲーション">
-              <Link href="/privacy" className="nav-link">
-                Privacy Policy
+              <Link href="/privacy" className="nav-link fs-caption">
+                Privacy
               </Link>
-              <Link href="/terms" className="nav-link">
-                Terms of Service
+              <Link href="/terms" className="nav-link fs-caption">
+                Terms
               </Link>
             </nav>
           </div>

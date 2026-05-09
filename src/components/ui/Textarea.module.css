@@ -14,15 +14,22 @@
 .textarea {
   padding: var(--spacing-md);
   font-size: var(--text-base);
+  background: oklch(1 0 0 / 0.5);
   border: 1px solid var(--border);
-  border-radius: var(--spacing-xs);
+  border-radius: var(--radius);
   width: 100%;
   min-height: 200px;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: all 0.2s ease;
   resize: vertical;
+  color: var(--foreground);
 }
 
 .textarea:focus {
-  border-color: var(--primary);
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 4px oklch(0.845 0.060 205.4 / 0.2);
+}
+
+.textarea::placeholder {
+  color: var(--muted);
 }
