@@ -1,65 +1,68 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { getPosts } from "@/server/repositories/post.repository";
+import { getPosts } from '@/server/repositories/post.repository';
 import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
+import styles from './page.module.css';
 
 export const dynamic = 'force-dynamic';
 
-export const Page = async () => {
+export default async function Page() {
   const posts = await getPosts();
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="section section--alt">
-        <div className="container hero">
-          <div className="hero__content">
+      {/* Hero Section - Serene & Analytical */}
+      <section className={styles.heroSection}>
+        <div className="container">
+          <div className={styles.heroContent}>
             <h1 className="fs-hero">Precision in Every Story</h1>
-            <p className="fs-sub">A high-quality blog platform focused on professional insights, consistent design, and interactive experiences.</p>
-            <div className="hero__cta">
-              <Button href="#posts">Read Latest</Button>
-              <Button href="/about" variant="outline">
+            <p className={`fs-sub ${styles.heroDescription}`}>A high-quality blog platform focused on professional insights, serene design, and refined experiences.</p>
+            <div className={styles.heroCta}>
+              <Button href="#posts" className="button--primary">
+                Read Latest
+              </Button>
+              <Button href="/about" className="button--outline">
                 Our Vision
               </Button>
             </div>
-          </div>
-          <div className="hero__image-wrapper">
-            <Image src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop" alt="Professional Workspace" className="hero__image" fill priority style={{ objectFit: 'cover' }} />
-            <div className="hero__image-overlay"></div>
           </div>
         </div>
       </section>
 
       {/* Latest Posts Section */}
-      <section id="posts" className="section">
+      <section id="posts" className={styles.postsSection}>
         <div className="container">
-          <h2 className="fs-section">Latest Posts</h2>
+          <div className={styles.postsHeader}>
+            <h2 className="fs-section">最新の投稿</h2>
+            <Link href="/posts" className="nav-link fs-caption">
+              View All Archive
+            </Link>
+          </div>
+
           {posts.length === 0 ? (
-            <Card style={{ marginTop: '4rem' }}>
-              <h3 className="fs-sub">No posts yet</h3>
-              <p className="fs-body">We&rsquo;re working on new content. Check back soon for updates.</p>
-              <p className="fs-caption">There are currently no published posts to display.</p>
-            </Card>
+            <div className={`glass ${styles.emptyState}`}>
+              <h3 className={`fs-sub ${styles.emptyStateTitle}`}>No posts yet</h3>
+              <p className="fs-body">現在、新しいコンテンツを制作中です。最新情報については、後日改めてご確認ください。</p>
+            </div>
           ) : (
             <div className="posts-grid">
               {posts.map((post) => (
-                <Card key={post.id}>
-                  <h3 className="fs-sub">{post.title}</h3>
-                  <p className="fs-body">{post.content.length > 120 ? `${post.content.substring(0, 120)}...` : post.content}</p>
-                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <time className="fs-caption" dateTime={post.created_at}>
-                      {new Intl.DateTimeFormat('ja-JP', {
-                        year: 'numeric',
-                        month: '2-digit',
-                        day: '2-digit',
-                      }).format(new Date(post.created_at))}
-                    </time>
-                    <Link href={`/posts/${post.slug}`} aria-label={`「${post.title}」を読む`} className="fs-body nav-link" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: '500' }}>
-                      Read more →
-                    </Link>
-                  </div>
-                </Card>
+                <article key={post.id} className={`glass`}>
+                  <Link href={`/posts/${post.slug}`} className={`${styles.postCard}`}>
+                    <div className={styles.postMeta}>
+                      <time className="fs-caption" dateTime={post.created_at}>
+                        {new Intl.DateTimeFormat('en-US', {
+                          month: 'short',
+                          day: '2-digit',
+                          year: 'numeric',
+                        }).format(new Date(post.created_at))}
+                      </time>
+                      <span className={`fs-caption ${styles.postTag}`}>TAG</span>
+                    </div>
+                    <h3 className={`fs-sub ${styles.postTitle}`}>{post.title}</h3>
+                    <p className={`fs-body ${styles.postExcerpt}`}>{post.content}</p>
+                    <div className={styles.postFooter}>READ MORE →</div>
+                  </Link>
+                </article>
               ))}
             </div>
           )}
@@ -67,5 +70,4 @@ export const Page = async () => {
       </section>
     </main>
   );
-};
-export default Page;
+}

@@ -18,12 +18,12 @@ describe('AdminPage', () => {
   it('renders the form with all required fields', () => {
     render(<AdminPage />);
 
-    expect(screen.getByText('Create New Post')).toBeInTheDocument();
+    expect(screen.getByText('Create New Analysis')).toBeInTheDocument();
     expect(screen.getByLabelText('Title')).toBeInTheDocument();
     expect(screen.getByLabelText('Slug')).toBeInTheDocument();
     expect(screen.getByLabelText('Content')).toBeInTheDocument();
     expect(screen.getByLabelText('Publish immediately')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Create Post' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Create Analysis' })).toBeInTheDocument();
   });
 
   it('has required attributes on necessary fields', () => {

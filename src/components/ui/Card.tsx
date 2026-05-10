@@ -3,13 +3,12 @@ import React from 'react';
 interface CardProps {
   children: React.ReactNode;
   className?: string;
-  style?: React.CSSProperties;
 }
 
-export const Card = ({ children, className = '', style }: CardProps) => {
+export const Card = ({ children, className = '' }: CardProps) => {
   return (
-    <article className={`card ${className}`} style={style}>
+    <div className={`glass ${className}`}>
       {children}
-    </article>
+    </div>
   );
 };
