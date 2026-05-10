@@ -26,7 +26,7 @@ reviews:
         - anyの使用・不要な型キャストがないか（Warning）
         - 他ユーザーのリソースを操作できるような認可漏れがないか（Critical）
         - 環境変数を直接コードに埋め込まれていないか
-        - コンポーネント定義が `export const ComponentName = ...` 形式か。
+        - 再利用可能なコンポーネントは、一貫性と名前付きエクスポートの利点を活かし `export const ComponentName = ({ props }: Props) => { ... }`を使用しているか
         - TypeScript の `interface` がコンポーネントと同じファイルに定義されているか。
         - 意味のある HTML タグ（`<main>`, `<header>`, `<nav>`, `<section>`等）を使用し、WCAG AA準拠のアクセシビリティ（a11y）が考慮されているか。
         - インタラクティブ要素に適切な `aria-label` やフォーカス管理がなされているか。

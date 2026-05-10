@@ -59,14 +59,6 @@ export default function RootLayout({
         <footer className="footer">
           <div className="container footer__inner">
             <p className="fs-caption">&copy; {new Date().getFullYear()} Moon Jelly. All rights reserved.</p>
-            <nav className="header__nav" aria-label="フッターナビゲーション">
-              <Link href="/privacy" className="nav-link fs-caption">
-                Privacy
-              </Link>
-              <Link href="/terms" className="nav-link fs-caption">
-                Terms
-              </Link>
-            </nav>
           </div>
         </footer>
       </body>

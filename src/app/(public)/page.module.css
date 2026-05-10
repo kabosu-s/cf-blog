@@ -69,10 +69,11 @@
 
 .postTitle {
   margin-top: var(--spacing-xs);
-  color: inherit;
-  text-decoration: none;
-    color: var(--card-foreground);
-}
+ .postTitle {
+   margin-top: var(--spacing-xs);
+   text-decoration: none;
+   color: var(--card-foreground);
+ }
 
 .postExcerpt {
   color: var(--card-foreground);

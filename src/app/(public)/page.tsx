@@ -56,7 +56,7 @@ export default async function Page() {
                           year: 'numeric',
                         }).format(new Date(post.created_at))}
                       </time>
-                      <span className={`fs-caption ${styles.postTag}`}>後でタグ</span>
+                      <span className={`fs-caption ${styles.postTag}`}>TAG</span>
                     </div>
                     <h3 className={`fs-sub ${styles.postTitle}`}>{post.title}</h3>
                     <p className={`fs-body ${styles.postExcerpt}`}>{post.content}</p>
