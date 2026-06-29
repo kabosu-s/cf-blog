@@ -19,8 +19,8 @@
 
 .heroCta {
   display: flex;
-  justify-content: center;
   gap: var(--spacing-base);
+  justify-content: center;
 }
 
 .postsSection {
@@ -29,15 +29,15 @@
 
 .postsHeader {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid var(--border);
+  justify-content: space-between;
   padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
 }
 
 .emptyState {
-  margin-top: var(--spacing-2xl);
   padding: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
   text-align: center;
 }
 
@@ -46,49 +46,46 @@
 }
 
 .postCard {
-  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
-  cursor: pointer;
+  padding: var(--spacing-lg);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .postMeta {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .postTag {
-  color: var(--primary);
   font-weight: 700;
+  color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .postTitle {
   margin-top: var(--spacing-xs);
- .postTitle {
-   margin-top: var(--spacing-xs);
-   text-decoration: none;
-   color: var(--card-foreground);
- }
-
-.postExcerpt {
   color: var(--card-foreground);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.postFooter {
-  margin-top: auto;
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--border);
-    color: var(--primary);
-  font-weight: 600;
   text-decoration: none;
 }
 
+.postExcerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  color: var(--card-foreground);
+  -webkit-box-orient: vertical;
+}
+
+.postFooter {
+  padding-top: var(--spacing-md);
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+}

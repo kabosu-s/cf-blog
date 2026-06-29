@@ -12,24 +12,24 @@
 }
 
 .textarea {
-  padding: var(--spacing-md);
-  font-size: var(--text-base);
-  background: oklch(1 0 0 / 0.5);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
   width: 100%;
   min-height: 200px;
-  outline: none;
-  transition: all 0.2s ease;
-  resize: vertical;
+  padding: var(--spacing-md);
+  font-size: var(--text-base);
   color: var(--foreground);
+  resize: vertical;
+  outline: none;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
 }
 
 .textarea:focus {
   border-color: var(--secondary);
-  box-shadow: 0 0 0 4px oklch(0.845 0.060 205.4 / 0.2);
+  box-shadow: 0 0 0 4px oklch(from var(--foreground) l c h / 0.2);
 }
 
 .textarea::placeholder {
-  color: var(--muted);
+  color: var(--muted-foreground);
 }

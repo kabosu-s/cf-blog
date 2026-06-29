@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Moon Jelly | Precision & Quality',
+  title: 'Moon Jelly',
   description: 'A serene and analytical blog platform.',
 };
 
@@ -42,11 +42,8 @@ export default function RootLayout({
               <Link href="/" className="nav-link">
                 Home
               </Link>
-              <Link href="/posts" className="nav-link">
+              <Link href="/admin" className="nav-link">
                 Posts
-              </Link>
-              <Link href="/about" className="nav-link">
-                About
               </Link>
             </nav>
           </div>

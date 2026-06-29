@@ -50,7 +50,7 @@ export default async function Page() {
                   <Link href={`/posts/${post.slug}`} className={`${styles.postCard}`}>
                     <div className={styles.postMeta}>
                       <time className="fs-caption" dateTime={post.created_at}>
-                        {new Intl.DateTimeFormat('en-US', {
+                        {new Intl.DateTimeFormat('ja-JP', {
                           month: 'short',
                           day: '2-digit',
                           year: 'numeric',

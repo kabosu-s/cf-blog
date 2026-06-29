@@ -4,10 +4,10 @@
 }
 
 .hero {
-  text-align: left;
   align-items: flex-start;
   max-width: none;
   margin: 0 0 var(--spacing-2xl) 0;
+  text-align: left;
 }
 
 .heroDescription {
@@ -15,8 +15,8 @@
 }
 
 .formContainer {
-  padding: var(--spacing-2xl);
   max-width: 800px;
+  padding: var(--spacing-2xl);
 }
 
 .form {
@@ -28,8 +28,8 @@
 
 .checkboxWrapper {
   display: flex;
-  align-items: center;
   gap: 0.8rem;
+  align-items: center;
 }
 
 .checkbox {

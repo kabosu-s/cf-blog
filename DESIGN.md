@@ -34,7 +34,6 @@ Implementation: `src/app/globals.css`
   --muted-foreground: oklch(0.414 0.069 240.2);
   --accent: oklch(0.845 0.060 205.4);
   --accent-foreground: oklch(0.241 0.042 256.3);
-  --destructive: oklch(0.765 0.095 297.3);
   --border: oklch(0.886 0.017 259.4);
   --input: oklch(0.886 0.017 259.4);
   --ring: oklch(0.764 0.091 243.8);
@@ -68,7 +67,6 @@ Implementation: `src/app/globals.css`
   --muted-foreground: oklch(0.889 0.014 258.3);
   --accent: oklch(0.845 0.060 205.4);
   --accent-foreground: oklch(0.241 0.042 256.3);
-  --destructive: oklch(0.765 0.095 297.3);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 16%);
   --ring: oklch(0.764 0.091 243.8);
