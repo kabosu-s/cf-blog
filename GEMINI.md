@@ -18,15 +18,14 @@ This document defines the foundational mandates and workflows for this project. 
 ## 3. Coding Conventions
 
 ### 3.1 TypeScript & React
-- **Component Definition**: Use `export const ComponentName = ({ props }: Props) => { ... }`.
+- **General Components**: 再利用可能なコンポーネントは、一貫性と名前付きエクスポートの利点を活かし `export const ComponentName = ({ props }: Props) => { ... }`を使用する。
+- **Routing Files (Page/Layout etc.)**: Next.jsの規約に従い `export default (async) function PageName() { ... }` を許容する。
 - **Types**: Define `interface` in the same file as the component.
 - **Client Components**: Only use `"use client";` when browser APIs (`window`, `localStorage`) or React hooks (`useState`, `useEffect`) are required.
 - **Next.js API**: Always treat `params` and `searchParams` as `Promise` and `await` them.
 
 ### 3.2 Styling
 - Use CSS Variables defined in `DESIGN.md` for all styling.
-- Prefer class-based styling. For readability, add line breaks between utility-like classes.
-- **NO** hardcoded color codes or magic numbers in component-specific styles.
 
 ## 4. Quality & Accessibility (a11y)
 - **a11y First**: Target WCAG AA compliance. Use semantic HTML (`<main>`, `<header>`, `<nav>`, `<section>`).

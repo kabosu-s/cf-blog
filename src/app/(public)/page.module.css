@@ -1,0 +1,91 @@
+.heroSection {
+  padding: var(--section-padding) 0;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroDescription {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--foreground);
+}
+
+.heroCta {
+  display: flex;
+  gap: var(--spacing-base);
+  justify-content: center;
+}
+
+.postsSection {
+  padding: 0 0 var(--section-padding) 0;
+}
+
+.postsHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.emptyState {
+  padding: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
+  text-align: center;
+}
+
+.emptyStateTitle {
+  margin-bottom: var(--spacing-sm);
+}
+
+.postCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.postMeta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.postTag {
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.postTitle {
+  margin-top: var(--spacing-xs);
+  color: var(--card-foreground);
+  text-decoration: none;
+}
+
+.postExcerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  color: var(--card-foreground);
+  -webkit-box-orient: vertical;
+}
+
+.postFooter {
+  padding-top: var(--spacing-md);
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  border-top: 1px solid var(--border);
+}
